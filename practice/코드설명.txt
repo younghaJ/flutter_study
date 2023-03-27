@@ -1,0 +1,15 @@
+MyApp 위젯은 MaterialApp을 반환하며, debugShowCheckedModeBanner 속성을 
+사용하여 디버그 배너를 표시하지 않도록 설정하고, Scaffold 위젯을 자식으로 가지고 
+있습니다. Scaffold 위젯은 앱 바(AppBar)과 CalcPage 위젯을 자식으로 가지고 있습니다.
+
+NavButton 위젯은 다른 페이지로 이동하는 데 사용됩니다. ElevatedButton을 포함하며, 
+Navigator.push 메서드를 사용하여 ThirdRoute로 이동합니다.
+
+CalcPage는 StatefulWidget입니다. Calculator 클래스는 수식을 계산하는 메서드를 
+제공합니다. build 메서드에서는 TextField와 다른 ElevatedButton 위젯을 포함하는 
+Column 위젯을 반환합니다. _buildElevatedButton 메서드는 각 ElevatedButton 위젯을 
+반환합니다. 각 버튼은 수식 입력란(TextField)에 적절한 값을 추가합니다. = 버튼을 
+누르면 _calculate 메서드를 호출하여 수식을 계산합니다.
+
+ThirdRoute는 앱에서 새 페이지를 나타냅니다. Scaffold 위젯을 반환하며, 
+단순한 ElevatedButton을 포함하고, 이 버튼을 클릭하면 이전 페이지로 돌아갑니다.
