@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_http_p1/post_dto.dart';
+import 'package:flutter_http_p1/post_repository.dart';
 import 'package:http/http.dart' as http;
 
 class ListPage extends HookWidget {
@@ -10,18 +11,24 @@ class ListPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final listState = useState<List<PostDtoTable>?>(null);
+    final listState = useState<List<PostDTOTable>?>(null);
 
     useEffect((){
-      String url = "https://jsonplaceholder.typicode.com/users";
-      http.get(Uri.parse(url)).then((response){
-        if(response.statusCode == 200){
-          dynamic decodedBody = jsonDecode(response.body);
-          List jsonList = decodedBody as List;
-          listState.value = jsonList.map((data){
-            return PostDtoTable(id: data["id"], name: data["name"], username: data["username"], email: data["email"]);
-          }).toList();
-        }
+      // String url = "https://jsonplaceholder.typicode.com/users";
+      // http.get(Uri.parse(url)).then((response){
+      //   if(response.statusCode == 200){
+      //     dynamic decodedBody = jsonDecode(response.body);
+      //     // List jsonList = decodedBody as List;
+      //     // listState.value = jsonList.map((data){
+      //     //   // return PostDTOTable(id: data["id"], name: data["name"], username: data["username"], email: data["email"]);
+      //     //   return PostDTOTable.fromJson(data);
+      //     // }).toList();
+      //     listState.value = PostDTOTable.fromJsonList(decodedBody);
+      //   }
+      // });
+
+      PostRepsitory.instance.getDTOList().then((value){
+        listState.value = value;
       });
     },[]);
     return Scaffold(
@@ -35,7 +42,7 @@ class ListPage extends HookWidget {
 }
 
 class ListItem extends StatelessWidget {
-  PostDtoTable postDtoTable;
+  PostDTOTable postDtoTable;
   ListItem({Key? key, required this.postDtoTable}) : super(key: key);
 
   @override
