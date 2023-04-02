@@ -14,7 +14,7 @@ class ListPage extends HookWidget {
     final listState = useState<List<MovieDTOTable>?>(null);
 
     useEffect((){
-      PostRepsitory.instance.getDTOList().then((value){
+      PostRepository.instance.getDTOList().then((value){
         listState.value = value;
       });
     },[]);
@@ -44,11 +44,10 @@ class ListItem extends StatelessWidget {
           Divider(),
           Text("영화이릅 : ${movieDtoTable.movieNm}"),
           Divider(),
-          Text("관객 수 : ${movieDtoTable.auiCnt}"),
+          Text("관객 수 : ${movieDtoTable.audiCnt}"),
           Divider(),
           Text("개봉일: ${movieDtoTable.openDt}"),
           Divider(),
-
         ],
       ),
     );

@@ -1,13 +1,13 @@
 class MovieDTOTable{
   int rank;
-  int auiCnt;
+  int audiCnt;
   String movieNm;
   String openDt;
 
-  MovieDTOTable({required this.rank, required this.auiCnt, required this.movieNm, required this.openDt});
+  MovieDTOTable({required this.rank, required this.audiCnt, required this.movieNm, required this.openDt});
   factory MovieDTOTable.fromJson(dynamic json) => MovieDTOTable(
     rank: json["rank"],
-    auiCnt: json["auiCnt"],
+    audiCnt: json["audiCnt"],
     movieNm: json["movieNm"],
     openDt: json["openDt"],
   );
@@ -19,13 +19,13 @@ class MovieDTOTable{
 
 class MovieDtoDetail{
   int rank;
-  int auiCnt;
+  int audiCnt;
   String movieNm;
   String openDt;
 
   MovieDtoDetail(
       {required this.rank,
-        required this.auiCnt,
+        required this.audiCnt,
         required this.movieNm,
         required this.openDt});
 }
